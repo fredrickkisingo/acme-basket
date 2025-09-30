@@ -1,0 +1,12 @@
+{
+  "name": "acme/basket",
+  "description": "Proof of concept shopping basket for Acme Widget Co",
+  "require": {
+  },
+  "require-dev": {
+  },
+  "autoload": {
+    "psr-4": {
+    }
+  }
+}
