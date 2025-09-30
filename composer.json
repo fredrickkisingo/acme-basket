@@ -2,6 +2,8 @@
   "name": "acme/basket",
   "description": "Proof of concept shopping basket for Acme Widget Co",
   "require": {
+    "php": "^7.4"
+
   },
   "require-dev": {
     "phpunit/phpunit": "^9.6"
