@@ -79,7 +79,6 @@ class Basket {
     private function calculateDeliveryFee(float $afterDiscount){
         foreach($this->deliveryRules as $rule){
             if($afterDiscount >= $rule['threshold']){
-                print_r("Delivery fee is $rule[cost]");
                 return $rule['cost'];
             }
         }
