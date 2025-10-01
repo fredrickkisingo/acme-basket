@@ -13,6 +13,7 @@ class Basket {
     private array $deliveryRules ;
 
     private array $items;
+    /** @var OfferInterface[] */
     public array $offers;
 
     public function __construct(array $catalogue,array $deliveryRules,array  $items = [],$offers = [])
