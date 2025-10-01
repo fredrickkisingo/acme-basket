@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  app:
+    build: .
+    container_name: acme-basket
+    volumes:
+      - .:/var/www/html
+    working_dir: /var/www/html
+    command: php src/index.php
