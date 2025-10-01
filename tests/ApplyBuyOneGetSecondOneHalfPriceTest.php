@@ -1,4 +1,7 @@
 <?php
+
+use Acme\Basket;
+use Acme\BuyOneGetSecondOneHalfPrice;
 use PHPUnit\Framework\TestCase;
 
 
@@ -21,8 +24,12 @@ class  ApplyBuyOneGetSecondOneHalfPriceTest extends TestCase
         ];
     }
 
-    public function testTwoRedWidgetApplyOffer(){
-        $basket = new Basket($this->catalogues,$this->deliveryRules);
+    public function testTwoRedWidgetApplyOffer(): void
+    {
+        $offers =[
+                new BuyOneGetSecondOneHalfPrice('R01')
+        ];
+        $basket = new Basket($this->catalogues,$this->deliveryRules,[],$offers);
         $basket->add('R01');
         $basket->add('R01');
 

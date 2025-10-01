@@ -1,10 +1,19 @@
 <?php
+namespace Acme;
 
 class Basket {
+
+    /**
+     * @var array<string, array{price: float}>
+     */
     private array $catalogue ;
+    /**
+     * @var array<int, array{threshold: float, cost: float}>
+     */
     private array $deliveryRules ;
-    private array $items = [];
-    private array $offers = [];
+
+    private array $items;
+    public array $offers;
 
     public function __construct(array $catalogue,array $deliveryRules,array  $items = [],$offers = [])
     {
@@ -13,7 +22,12 @@ class Basket {
         $this->items = $items;
         $this->offers = $offers;
     }
-    public function add(string $productCode)
+
+    /**
+     * @param string $productCode
+     * @return string
+     */
+    public function add(string $productCode): string
     {
         if(!isset($this->catalogue[$productCode])){
             throw new InvalidArgumentException("Product $productCode not found in catalogue");
@@ -21,7 +35,11 @@ class Basket {
         return $this->items[] = $productCode;
     }
 
-    public function total(){
+    /**
+     * @return float
+     */
+    public function total(): float
+    {
         //Return total basket cost taking into acc delivery and offer rules
         $subtotal = $this->calculateSubTotal();
         $discount = $this->applyOffers();
@@ -30,6 +48,9 @@ class Basket {
         return round($subtotal+$delivery-$discount,2);
     }
 
+    /**
+     * @return float|mixed
+     */
     private function calculateSubTotal(){
         $subtotal = 0.0;
         foreach($this->items as $item){
@@ -37,21 +58,24 @@ class Basket {
         }
         return $subtotal;
     }
+
+    /**
+     * @return float
+     */
     private function applyOffers(): float
     {
-        //orders
         $discount = 0.0;
-        $countRO1 = 0;
-        foreach($this->items as $item){
-            if($item === 'R01'){
-                $countRO1++;
-            }
+        foreach($this->offers as $offer){
+            $discount += $offer->apply($this->items, $this->catalogue);
+
         }
-        // Initial offer, For every pair of R01, discount half of one (32.95 / 2)
-        $pairs = intdiv($countRO1, 2);
-        $discount += $pairs * $this->catalogue['R01']['price'] / 2;
         return $discount;
     }
+
+    /**
+     * @param float $afterDiscount
+     * @return float|mixed
+     */
     private function calculateDeliveryFee(float $afterDiscount){
         foreach($this->deliveryRules as $rule){
             if($afterDiscount >= $rule['threshold']){

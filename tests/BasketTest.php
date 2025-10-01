@@ -1,11 +1,23 @@
 <?php
+
+use Acme\Basket;
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/../src/Basket.php';
 
 class BasketTest extends TestCase
 {
-    protected $catalogue;
+    protected array $catalogue;
+
+    /**
+     * @param array[] $catalogue
+     * @return BasketTest
+     */
+    public function setCatalogue(array $catalogue): BasketTest
+    {
+        $this->catalogue = $catalogue;
+        return $this;
+    }
 
     protected function setUp(): void
     {
