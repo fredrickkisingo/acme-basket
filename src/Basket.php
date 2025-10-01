@@ -47,7 +47,7 @@ class Basket {
                 $countRO1++;
             }
         }
-        // For every pair of R01, discount half of one (32.95 / 2)
+        // Initial offer, For every pair of R01, discount half of one (32.95 / 2)
         $pairs = intdiv($countRO1, 2);
         $discount += $pairs * $this->catalogue['R01']['price'] / 2;
         return $discount;
