@@ -13,7 +13,6 @@ A simple proof of concept basket for Acme Widget Co new sales system
 ## Structure
 -  **Basket.php** - The main class that handles the basket
 -  **Catalogue.php** - The catalogue of products
--  **DeliveryRules.php** - The delivery rules
 -  **index.php** - The main entry point
 
 ## Assumptions made
