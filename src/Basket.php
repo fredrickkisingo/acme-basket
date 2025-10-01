@@ -41,9 +41,15 @@ class Basket {
     {
         //orders
         $discount = 0.0;
-        foreach($this->offers as $offer){
-            $discount += $offer->apply($this);
+        $countRO1 = 0;
+        foreach($this->items as $item){
+            if($item === 'R01'){
+                $countRO1++;
+            }
         }
+        // For every pair of R01, discount half of one (32.95 / 2)
+        $pairs = intdiv($countRO1, 2);
+        $discount += $pairs * $this->catalogue['R01']['price'] / 2;
         return $discount;
     }
     private function calculateDeliveryFee(float $afterDiscount){

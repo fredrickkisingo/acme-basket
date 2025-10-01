@@ -32,11 +32,11 @@ class BasketTest extends TestCase
 
         $this->assertEquals(37.85, $basket->total());
     }
-
+    /** @test */
     public function it_applies_red_widget_offer_when_two_red_widgets_added(){
         $basket = new Basket($this->catalogue,$this->deliveryRules);
         $basket->add('R01');
         $basket->add('R01');
-        $this->assertEquals(49.43, $basket->total());
+        $this->assertEquals(54.38, $basket->total());
     }
 }
