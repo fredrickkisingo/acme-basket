@@ -20,6 +20,7 @@ A simple proof of concept basket for Acme Widget Co new sales system
 -  Delivery charges are calculated based on the total price of the basket
 -  Offers only apply to a single product code
   - Rules are sorted in descending order of threshold
+  -  Floating point numbers are rounded to 2 decimal places,so this may introduce some inaccuracy with the amounts
 
 ## Getting Started
 
@@ -39,13 +40,20 @@ Build the Docker image
    ```
 
 Run the main index.php
-    ```
-    docker-compose run --rm app
-     ```
+
+  ```
+docker-compose run --rm app
+   ```
+
 Run tests
-    ```
-    docker-compose run --rm app composer test
-    ```
+
+ ```
+docker-compose run --rm app composer test
+   ```
+
+
+
+
 
 ## P.S
 
