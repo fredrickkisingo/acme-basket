@@ -1,6 +1,7 @@
 <?php
 
 use Acme\Basket;
+use Acme\BuyOneGetSecondOneHalfPrice;
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/../src/Basket.php';
@@ -46,7 +47,10 @@ class BasketTest extends TestCase
     }
     /** @test */
     public function it_applies_red_widget_offer_when_two_red_widgets_added(){
-        $basket = new Basket($this->catalogue,$this->deliveryRules);
+        $offers =[
+            new BuyOneGetSecondOneHalfPrice('R01')
+        ];
+        $basket = new Basket($this->catalogue,$this->deliveryRules,[],$offers);
         $basket->add('R01');
         $basket->add('R01');
         $this->assertEquals(54.38, $basket->total());
