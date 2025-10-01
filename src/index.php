@@ -1,4 +1,8 @@
 <?php
+require __DIR__ . '/../vendor/autoload.php';
+
+use Acme\BuyOneGetSecondOneHalfPrice;
+
 $catalogue = [
     'R01' => ['name' => 'Red Widget', 'price' => 32.95],
     'G01' => ['name' => 'Green Widget', 'price' => 24.95],

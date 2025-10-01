@@ -1,6 +1,8 @@
 <?php
 
-class BuyOneGetSecondOneHalfPrice{
+namespace Acme;
+
+class BuyOneGetSecondOneHalfPrice {
 
     private string $productCode;
     public function __construct(string $productCode)
