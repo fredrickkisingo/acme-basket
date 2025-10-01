@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/../vendor/autoload.php';
 
+use Acme\Basket;
 use Acme\BuyOneGetSecondOneHalfPrice;
 
 $catalogue = [
@@ -16,3 +17,19 @@ $deliveryRules = [
 $offers = [
     new BuyOneGetSecondOneHalfPrice('R01'),
 ];
+
+$baskets = [
+    ['B01', 'G01'],
+    ['R01', 'R01'],
+    ['R01', 'G01'],
+    ['B01', 'B01', 'R01', 'R01', 'R01'],
+];
+
+
+foreach ($baskets as $products) {
+    $basket = new Basket($catalogue, $deliveryRules,[], $offers);
+    foreach ($products as $p) {
+        $basket->add($p);
+    }
+    echo implode(', ', $products) . " => " . $basket->total() . PHP_EOL;
+}
