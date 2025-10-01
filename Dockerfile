@@ -13,8 +13,6 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy project files into container
-COPY . .
 
 # Install PHP dependencies
 RUN composer install --no-interaction --prefer-dist
