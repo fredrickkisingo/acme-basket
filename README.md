@@ -20,7 +20,7 @@ A simple proof of concept basket for Acme Widget Co new sales system
 -  Delivery charges are calculated based on the total price of the basket
 -  Offers only apply to a single product code
   - Rules are sorted in descending order of threshold
-  -  Floating point numbers are rounded to 2 decimal places,so this may introduce some inaccuracy with the amounts
+  -  Floating point numbers are rounded to 2 decimal places,so this may introduce slight difference in the final result
 
 ## Getting Started
 
