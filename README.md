@@ -32,6 +32,12 @@ Clone the Repository:
    git clone https://github.com/fredrickkisingo/acme-basket.git
    ```
 
+Navigate to main project directory:
+
+   ```
+   cd acme-basket
+   ```
+
 `Set Up Docker:` Make sure you have Docker and Docker Compose installed on your machine:
 
 Build the Docker image
